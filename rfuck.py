@@ -1,3 +1,5 @@
+#legacy skelton idea
+#not for release
 import sys
 
 def main():
