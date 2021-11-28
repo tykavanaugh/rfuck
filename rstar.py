@@ -28,15 +28,22 @@ def main():
 
 
     #check for invalid lines
-    for i,line in enumerate(input_code):
+    print("checking statements")
+    for i,line in enumerate(input_code): 
         errors_found = False
         line_type = helper.identify_line_type(line)
         if "invalid type cannot be both" in line_type:
             print(f'Error line {i}: {line_type}')
             errors_found = True
+        else:
+            print(f'{i}:{line_type}')
     if errors_found:
         print("Compilation Error")
         return
+
+    print(helper.parse_assignment("my buddy, for clarity lets call it green, is very okay"))
+    print(helper.variable_table)
+
 
 
     #Set outfile filename based on args- future addition

@@ -3,10 +3,63 @@ class Helper:
         self.variable_table = {'reddit':'yta'}
         self.pronouns = ['i','he','she','we','they','someone','something','it','ze']
         self.second_person_pronouns = ['them','you','her','him','zem','those','it']
+        self.current_indent = 0
+
+    def sum_words(self, str_slice):
+        print(str_slice)
+        out_val = 0
+        if " " not in str_slice:
+            return len(str_slice)
+        words_list = str_slice.split()
+        words_list.reverse()
+        for i,word in enumerate(words_list):
+            out_val += len(word) * 10**i
+        return out_val
 
     def assign_variable(self,var_name,value=0):
         var_name = var_name.lower()
         self.variable_table[var_name] = value
+
+    #Parser functions
+    def parse_assignment(self,line):
+        for pronoun in self.second_person_pronouns:
+            if f'lets call {pronoun}' in line:
+                print('match')
+                item_len = len(f'lets call {pronoun}')
+                start_loc = line.rfind(f'lets call {pronoun}')+item_len
+                end_loc = start_loc + line[start_loc+1:].find(" ")
+                print(start_loc)
+                print(end_loc)
+                if end_loc < start_loc:
+                    var_name = line[start_loc:]
+                else:
+                    var_name = line[start_loc+1:end_loc]
+        #check for boolean assignment
+        special_list = ['family','country','group']
+        for item in special_list:
+            if f'best for the {item}' in line:
+                self.assign_variable(var_name,True)
+                return
+            if f'worse for the {item}' in line:
+                self.assign_variable(var_name,False)
+                return
+        #int assignment
+        if f'{var_name}, is nothing' in line:
+            self.assign_variable(var_name,0)
+            return
+        if f'{var_name}, is not' in line:
+            start_loc = line.rfind(f'{var_name}, is not') + len(f'{var_name}, is not')
+            value = self.sum_words(line[start_loc:])
+            self.assign_variable(var_name,value*-1)
+            return
+        if f'{var_name}, is' in line:
+            start_loc = line.rfind(f'{var_name}, is') + len(f'{var_name}, is')
+            value = self.sum_words(line[start_loc:])
+            self.assign_variable(var_name,value)
+            return
+        self.assign_variable(var_name)
+        return
+                
     
     def format_statements(self,raw_lines_array):
         #break sentences and paragraphs into statements
