@@ -1,12 +1,13 @@
 class Helper:
     def __init__(self):
-        self.variable_table = {'reddit':'yta'}
+        self.variable_table = {
+            'reddit':'yta',
+            }
         self.pronouns = ['i','he','she','we','they','someone','something','it','ze']
         self.second_person_pronouns = ['them','you','her','him','zem','those','it']
         self.current_indent = 0
 
     def sum_words(self, str_slice):
-        print(str_slice)
         out_val = 0
         if " " not in str_slice:
             return len(str_slice)
@@ -24,12 +25,9 @@ class Helper:
     def parse_assignment(self,line):
         for pronoun in self.second_person_pronouns:
             if f'lets call {pronoun}' in line:
-                print('match')
                 item_len = len(f'lets call {pronoun}')
                 start_loc = line.rfind(f'lets call {pronoun}')+item_len
                 end_loc = start_loc + line[start_loc+1:].find(" ")
-                print(start_loc)
-                print(end_loc)
                 if end_loc < start_loc:
                     var_name = line[start_loc:]
                 else:
@@ -59,6 +57,35 @@ class Helper:
             return
         self.assign_variable(var_name)
         return
+
+    def parse_compare(self,line):
+        current_operator = ''
+        operators_list = [
+            ('was better than ',lambda x,y:x>y),
+            ('was worse than ',lambda x,y:x<y),
+            ('was the same as ',lambda x,y:x==y),
+            ('was nothing like ',lambda x,y:x!=y),
+            ('was better or the same as ',lambda x,y:x>=y),
+            ('was worse or the same as ',lambda x,y:x<=y),
+        ]
+        for operator in operators_list:
+            if operator[0] in line:
+                current_operator = operator
+        start0 = line.rfind('argued that ') + len('argued that ')
+        end0 = start0 + line[start0+1:].find(" ") + 1
+        start1 = line.rfind(current_operator[0]) + len(current_operator[0])
+        end1 = start1 + line[start1+1:].find(" ") + 1
+        start2 = line.rfind("with ") + len("with ")
+        end2 = start2 + line[start2+1:].find(" ") + 1
+        var0 = line[start0:end0]
+        var1 = line[start1:end1]
+        if end2 >= start2:
+            var2 = line[start2:]
+        else:
+            var2 = line[start2:end2]
+        
+        self.variable_table[var2] = current_operator[1](var0,var1)
+
                 
     
     def format_statements(self,raw_lines_array):
@@ -125,7 +152,8 @@ class Helper:
         for pronoun in self.pronouns:
             match_statement = f'{pronoun} argued'
             if match_statement == line[:len(match_statement)]:
-                return True
+                if "with" in line:
+                    return True
         return False
 
     #Check operator statement

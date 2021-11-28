@@ -36,12 +36,16 @@ def main():
             print(f'Error line {i}: {line_type}')
             errors_found = True
         else:
+            #for debugging
             print(f'{i}:{line_type}')
+            pass
     if errors_found:
         print("Compilation Error")
         return
 
-    print(helper.parse_assignment("my buddy, for clarity lets call it green, is very okay"))
+    helper.parse_assignment("my buddy, for clarity lets call it green, is very okay")
+    helper.parse_assignment("my buddy, for ease lets call him bob, is not super okay")
+    helper.parse_compare("I argued that green wasn't enough and was better than bob with gusto")
     print(helper.variable_table)
 
 
@@ -74,12 +78,12 @@ def main():
 
 
 #compare variables start with "Pronoun argued"
-    # var0 > var1 "Pronoun argued that var0 was better than var2"
-    # var0 < var1 "Pronoun argued that var0 was worse than var2"
-    # var0 == var1 "Pronoun argued that var0 was the same as var2"
-    # var0 != var1 "Pronoun argued that var0 was nothing like var2"
-    # var0 >= var1 "Pronoun argued that var0 was better or the same as var2"
-    # var0 <= var1 "Pronoun argued that var0 was worse or the same as var2"
+    # var0 > var1 "Pronoun argued that var0 was better than var2 with var3"
+    # var0 < var1 "Pronoun argued that var0 was worse than var2 with var3"
+    # var0 == var1 "Pronoun argued that var0 was the same as var2 with var3"
+    # var0 != var1 "Pronoun argued that var0 was nothing like var2 with var3"
+    # var0 >= var1 "Pronoun argued that var0 was better or the same as var2 with var3"
+    # var0 <= var1 "Pronoun argued that var0 was worse or the same as var2 with var3"
 
 #operators start with "So then"
     # var0 + var1 "var0 gave x to var1"
