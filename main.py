@@ -66,7 +66,7 @@ def main():
     
     #execute script
     print(out_file_name)
-    #os.system(f'python3 {out_file_name}')
+    os.system(f'python3 {out_file_name}')
 
 #features
 
