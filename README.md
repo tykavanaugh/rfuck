@@ -37,7 +37,7 @@ Explain or document how r/relationshitsLang works like at all. probably not
 
 # Hello.redditlang
 
-This prints "HELLO" may god have mercy on me for making this
+This overly complicated program prints "HELLO" using a while loop that iterates one time may god have mercy on me for making this
 
 
 ```
