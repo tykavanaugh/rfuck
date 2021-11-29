@@ -9,6 +9,8 @@ python main.py filename.redditlang
 
 There will likely be issues if you try this on a non-unix system because of carriage returns. 
 
+All documentation right now is just comments in the source code fuck you
+
 ## Implemented
 
 Variable assignment to int or bool
@@ -27,6 +29,9 @@ For loops
 
 Compile to golang/c binary instead of python
 
+Handle assignment with integers that have zeros in base 10 better
+
+Explain or document how r/relationshitsLang works like at all. probably not
 
 # Hello.redditlang
 
