@@ -85,6 +85,8 @@ I will use python fstring notation for strings with variables
 
 The basic structure is the `sentence`. Each "line" indicated by a carriage return or a period is considered a `sentence`, like ";" in C or a carriage return in python. Unlike good or useful languages, a `sentence` must either be a specific type of statement or it's considered a comment. If it can be typed ambigously the program will not compile and you will get an error telling you which lines were ambigious. Because of the difficulty of knowing exactly what type of statement you are making, the compiler script will by default tell you what it thinks each line is.
 
+Mispellings and bizarre syntax/formatting/variable names is strongly encouraged! Remember to channel someone who thinks asking reddit for advice on their intimate parter issues is a good idea.
+
 Case is irrelvant. 
 
 First and second person pronouns are also part of certain statements
