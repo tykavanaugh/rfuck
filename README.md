@@ -6,15 +6,21 @@ Parses code that looks like the average reddit relationships question and transp
 ## Implemented
 
 Variable assignment to int or bool
+
 While loops
+
 Comparison operators
+
 Stdout 
 
 ## Todo/Partial
 
 Basic operators (add, subtract, modulo, divide, multiply, etc)
+
 For loops
+
 Compile to golang/c binary instead of python
+
 
 # Hello.redditlang
 
