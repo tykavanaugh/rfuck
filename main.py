@@ -1,6 +1,7 @@
 import sys
 import re
 import helpers
+import os
 # import PyInstaller.__main__
 
 # PyInstaller.__main__.run([
@@ -41,25 +42,31 @@ def main():
             pass
     if errors_found:
         print("Compilation Error")
-        return
-
-    helper.parse_assignment("my buddy, for clarity lets call it green, is very okay")
-    helper.parse_assignment("my buddy, for ease lets call him bob, is not super okay")
-    helper.parse_compare("I argued that green wasn't enough and was better than bob with gusto")
-    print(helper.variable_table)
+        sys.exit()
 
 
+    output_code = []
+    for line in input_code:
+        result =  helper.identify_and_return(line)
+        if result:
+            output_code.append(result)
 
-    #Set outfile filename based on args- future addition
-    # if len(sys.argv) > 2:
-    #     out_file = open(sys.argv[2],'w')
-    # else:
-    #     out_file_name = str(sys.argv[1])[:str(sys.argv[1]).rfind('.')] + '.redditlang'
+
+
+    #Set outfile filename based on args
+    if len(sys.argv) > 2:
+        out_file = open(sys.argv[2],'w')
+    else:
+        out_file_name = str(sys.argv[1])[:str(sys.argv[1]).rfind('.')] + '.compiled'
     
-    #write file- future addition
-    # with open(out_file_name,'w') as out_file:
-    #     for line in input_code:
-    #         out_file.write((f'{line}\n'))
+    #write file
+    with open(out_file_name,'w') as out_file:
+        for line in output_code:
+            out_file.write((f'{line}\n'))
+    
+    #execute script
+    print(out_file_name)
+    os.system(f'python3 {out_file_name}')
 
 #features
 

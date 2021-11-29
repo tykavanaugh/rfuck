@@ -7,6 +7,20 @@ class Helper:
         self.second_person_pronouns = ['them','you','her','him','zem','those','it']
         self.current_indent = 0
 
+    def identify_and_return(self,line):
+        tab = f'\t'
+        if self.identify_line_type(line) == "assignment":
+            return f"{tab*self.current_indent}{self.parse_assignment(line)}"
+        if self.identify_line_type(line) == "comparison":
+            return f"{tab*self.current_indent}{self.parse_compare(line)}"
+        if self.identify_line_type(line) == "while":
+            return self.parse_while(line)
+        if self.identify_line_type(line) == "whilebreak":
+            return self.parse_endwhile(line)
+        if self.identify_line_type(line) == "stdout":
+            return f"{tab*self.current_indent}{self.parse_stdout(line)}"
+
+
     def sum_words(self, str_slice):
         out_val = 0
         if " " not in str_slice:
@@ -14,12 +28,14 @@ class Helper:
         words_list = str_slice.split()
         words_list.reverse()
         for i,word in enumerate(words_list):
-            out_val += len(word) * 10**i
+            if word != "nothing" or word != "none" or word != 'no' or word != 'not':
+                out_val += len(word) * 10**i
         return out_val
 
     def assign_variable(self,var_name,value=0):
         var_name = var_name.lower()
         self.variable_table[var_name] = value
+        return f'variable_{var_name} = {value}'
 
     #Parser functions
     def parse_assignment(self,line):
@@ -30,43 +46,42 @@ class Helper:
                 end_loc = start_loc + line[start_loc+1:].find(" ")
                 if end_loc < start_loc:
                     var_name = line[start_loc:]
+                    var_name = var_name.strip()
                 else:
-                    var_name = line[start_loc+1:end_loc]
+                    var_name = line[start_loc+1:end_loc+1]
+                    var_name = var_name.strip()
+                    if var_name[-1] == ",":
+                        var_name = var_name[:-1]
+                        var_name = var_name.strip()
         #check for boolean assignment
         special_list = ['family','country','group']
         for item in special_list:
             if f'best for the {item}' in line:
-                self.assign_variable(var_name,True)
-                return
+                return self.assign_variable(var_name,True)
             if f'worse for the {item}' in line:
-                self.assign_variable(var_name,False)
-                return
+                return self.assign_variable(var_name,False)
         #int assignment
         if f'{var_name}, is nothing' in line:
-            self.assign_variable(var_name,0)
-            return
+            return self.assign_variable(var_name,0)
         if f'{var_name}, is not' in line:
             start_loc = line.rfind(f'{var_name}, is not') + len(f'{var_name}, is not')
             value = self.sum_words(line[start_loc:])
-            self.assign_variable(var_name,value*-1)
-            return
+            return self.assign_variable(var_name,value*-1)
         if f'{var_name}, is' in line:
             start_loc = line.rfind(f'{var_name}, is') + len(f'{var_name}, is')
             value = self.sum_words(line[start_loc:])
-            self.assign_variable(var_name,value)
-            return
-        self.assign_variable(var_name)
-        return
+            return self.assign_variable(var_name,value)
+        return self.assign_variable(var_name)
 
     def parse_compare(self,line):
         current_operator = ''
         operators_list = [
-            ('was better than ',lambda x,y:x>y),
-            ('was worse than ',lambda x,y:x<y),
-            ('was the same as ',lambda x,y:x==y),
-            ('was nothing like ',lambda x,y:x!=y),
-            ('was better or the same as ',lambda x,y:x>=y),
-            ('was worse or the same as ',lambda x,y:x<=y),
+            ('was better than ',lambda x,y:x>y,'>'),
+            ('was worse than ',lambda x,y:x<y,'<'),
+            ('was the same as ',lambda x,y:x==y,'=='),
+            ('was nothing like ',lambda x,y:x!=y,'!='),
+            ('was better or the same as ',lambda x,y:x>=y,'>='),
+            ('was worse or the same as ',lambda x,y:x<=y,'<='),
         ]
         for operator in operators_list:
             if operator[0] in line:
@@ -83,11 +98,38 @@ class Helper:
             var2 = line[start2:]
         else:
             var2 = line[start2:end2]
-        
-        self.variable_table[var2] = current_operator[1](var0,var1)
-
-                
+        return f'variable_{var2} = variable_{var0} {current_operator[2]} variable_{var1}'
+        #self.assign_variable(var2,(current_operator[1](var0,var1)))
     
+    def parse_while(self,line):
+        for pronoun in self.pronouns:
+            match_statement = f'{pronoun} calmly explained to '
+            if match_statement == line[:len(match_statement)]:
+                start = line.rfind(match_statement) + len(match_statement)
+                end = start + line[start+1:].find(" ") + 1
+                var_name = line[start:end+1]
+                self.current_indent = 1
+                return f'while variable_{var_name}:'
+
+    def parse_endwhile(self,line):
+        self.current_indent = 0
+
+    def parse_stdout(self,line):
+        for pronoun in self.pronouns:
+            match_statements = [
+                f'{pronoun} told',
+                f'{pronoun} declared',
+                f'{pronoun} proclaimed',
+                f'{pronoun} yelled',
+                f'{pronoun} screamed',
+            ]
+            for match_statement in match_statements:
+                if match_statement == line[:len(match_statement)]:
+                    start = line.rfind('that ') + len('that ')
+                    end = start + line[start+1:].find(" ") + 1
+                    var_name = line[start:end+1]
+                    return f'print(chr(variable_{var_name}),end="")'
+
     def format_statements(self,raw_lines_array):
         #break sentences and paragraphs into statements
         output_array = []
@@ -144,6 +186,8 @@ class Helper:
     #Check comment statement
     def is_comment_statement(self,line):
         if "backstory" in line:
+            return True
+        if "history" in line:
             return True
         return False
 
@@ -210,6 +254,7 @@ class Helper:
                 f'{pronoun} proclaimed',
                 f'{pronoun} yelled',
                 f'{pronoun} screamed',
+                f'{pronoun} sobbed',
             ]
             for match_statement in match_statements:
                 if match_statement == line[:len(match_statement)]:
