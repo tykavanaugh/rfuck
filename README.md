@@ -97,6 +97,11 @@ Second person: 'them','you','her','him','zem','those','it','our'
 
 ### Implemented Features
 
+#### Comments
+
+Any sentence with "backstory" or "history" will evaluate to a comment without an error, regardless of everything else.
+
+Any sentence that doesn't match any other kind will still become a comment (though the compiler will call it a "no type" for clarity)
 
 #### Variable Assignment
 
@@ -115,5 +120,43 @@ To declare and assign a value, follow the variable name with a comma, and then e
 my_car = 147
 
 In progress of figuring out how I will assign 0 values, probably with a keyword. Avoid the words "nothing" "none" "no" "not" for now because they may cause bugs with my current broken attempt to do so.
+
+#### While loop
+
+f"{first person pronoun} calmly explained to " declares while and the word following must be an already declared variable that is the condition of the loop. As it's python, python truthy or falsy values will work for the loop
+
+You cannot nest while loops in this version.
+
+For example:
+
+```We calmly explained to my_car```
+
+All text after that in the statement is just comments.
+
+To end the while loop a statement with 'refused to discuss','stormed off','refused to talk' will exit the loop and return to the main scope
+
+#### Logic
+
+
+f"{first person pronoun} argued that" followed by a variable, followed by an operator, followed by another variable, followed by "with" followed by the new assigned variable.
+
+Operators
+```
+'was better than' >
+'was worse than' <
+'was the same as' == 
+'was nothing like' !=
+'was better or the same as' >=
+'was worse or the same as' <=
+```
+
+Assuming cats = 1 and dogs = -1
+
+```
+We argued that cats was better than dogs with dad.
+```
+dad = True
+
+
 
 
