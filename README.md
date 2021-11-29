@@ -2,6 +2,12 @@
 
 Parses code that looks like the average reddit relationships question and transpiles into python and then executes the script
 
+Simply run 
+```
+python main.py filename.redditlang
+```
+
+There will likely be issues if you try this on a non-unix system because of carriage returns. 
 
 ## Implemented
 
