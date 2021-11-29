@@ -4,7 +4,7 @@ class Helper:
             'reddit':'yta',
             }
         self.pronouns = ['i','he','she','we','they','someone','something','it','ze']
-        self.second_person_pronouns = ['them','you','her','him','zem','those','it']
+        self.second_person_pronouns = ['them','you','her','him','zem','those','it','our']
         self.current_indent = 0
 
     def identify_and_return(self,line):
