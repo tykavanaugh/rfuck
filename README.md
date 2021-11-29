@@ -9,7 +9,9 @@ python main.py filename.redditlang
 
 There will likely be issues if you try this on a non-unix system because of carriage returns. 
 
-All documentation right now is just comments in the source code fuck you
+~~All documentation right now is just comments in the source code fuck you~~
+
+Some documentation added
 
 ## Implemented
 
