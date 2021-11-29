@@ -121,7 +121,9 @@ To declare and assign a value, follow the variable name with a comma, and then e
 
 my_car = 147
 
-In progress of figuring out how I will assign 0 values, probably with a keyword. Avoid the words "nothing" "none" "no" "not" for now because they may cause bugs with my current broken attempt to do so.
+In progress of figuring out how I will assign 0 values, probably with a keyword. 
+
+"empty" should evaluate to 1 * 10 ^ position of the word but this is currently untested.
 
 #### While loop
 
