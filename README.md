@@ -75,3 +75,45 @@ has some anger issues, just to add more backstory
 dad refused to discuss and stormed off before we could talk about them giving me their house
 
 ```
+
+
+## "Documentation"
+
+### General Syntax
+
+I will use python fstring notation for strings with variables
+
+The basic structure is the `sentence`. Each "line" indicated by a carriage return or a period is considered a `sentence`, like ";" in C or a carriage return in python. Unlike good or useful languages, a `sentence` must either be a specific type of statement or it's considered a comment. If it can be typed ambigously the program will not compile and you will get an error telling you which lines were ambigious. Because of the difficulty of knowing exactly what type of statement you are making, the compiler script will by default tell you what it thinks each line is.
+
+Case is irrelvant. 
+
+First and second person pronouns are also part of certain statements
+
+I understand I am using "first and second person" incorrectly I don't care
+
+First person: 'i','he','she','we','they','someone','something','it','ze'
+
+Second person: 'them','you','her','him','zem','those','it','our'
+
+### Implemented Features
+
+
+#### Variable Assignment
+
+Variable assignment can be to an integer or a bool.
+
+Assignment sentences must start with "my" "so" "our" or "the", then contain the word "clarity" "for ease" or "simplicity," then contain f"lets call {first person pronoun}" followed by a space and the name of the variable you wish to create. If you stop here the value of the variable will be 0
+
+```My car, for ease lets call it my_car```
+
+my_car = 0
+
+To declare and assign a value, follow the variable name with a comma, and then either the word "is" for a positive, "is not" for a negative, or "is nothing" for explict 0. The length of the words correspond to the value of length of the word times 10 ^ position of the word from the right. "A real clunker" evaluates to 147. 
+
+```My car, for ease lets call it my_car, is a real clunker```
+
+my_car = 147
+
+In progress of figuring out how I will assign 0 values, probably with a keyword. Avoid the words "nothing" "none" "no" "not" for now because they may cause bugs with my current broken attempt to do so.
+
+
