@@ -28,8 +28,10 @@ class Helper:
         words_list = str_slice.split()
         words_list.reverse()
         for i,word in enumerate(words_list):
-            if word != "nothing" or word != "none" or word != 'no' or word != 'not':
+            if word != "empty":
                 out_val += len(word) * 10**i
+            else:
+                out_val = 10**i
         return out_val
 
     def assign_variable(self,var_name,value=0):
@@ -130,6 +132,12 @@ class Helper:
                     var_name = line[start:end+1]
                     return f'print(chr(variable_{var_name}),end="")'
 
+    def parse_basic_operator(self,line):
+        if line[:8] == 'so then ':
+            pass
+
+
+    #Formatting helpers
     def format_statements(self,raw_lines_array):
         #break sentences and paragraphs into statements
         output_array = []
@@ -150,6 +158,7 @@ class Helper:
                 clean_output_array.append(line)
         return clean_output_array
 
+    #Identifier
     def identify_line_type(self,line):
         line_type = []
         if self.is_comment_statement(line):
