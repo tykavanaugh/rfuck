@@ -38,48 +38,57 @@ Compile to golang/c binary instead of python
 
 Handle assignment with integers that have zeros in base 10 better
 
-# Hello.redditlang
-
-This overly complicated program prints "HELLO" using a while loop that iterates one time may god have mercy on me for making this
-
-
+# Fizzbuzz.redditlang
 ```
-Backstory: my family has lots of political drama
-so dad, for clarity lets call him d, is generly it
-more backstory by that I mean the source the drama
-so trump, for ease lets call him t, is kindaa important
-the thing, who for simplicity lets call it l, is superly online
-kinda guy, you know just for more backstory
-my family, for clarity lets call f, is a f a
-mily that likes to argue about politics and history stuff
-our cat, for clarity lets call it dad, is a cuddly guy
+History about my family- we count down from 50 to 0
+Backstory about us, we print fizz if the integer is divisible by 3
+Our family history is that we print buzz if divisible by 5
+And our last bit of history is that we print fizzbuzz if divisible by 3 AND 5
+My program, for ease lets call it fizzbuzzloop, is quite empty
+My f, for clarity lets call it letterF, is mostlly empty
+Our i, for clarity lets call it letterI, is almostt two
+So z, for simplicity lets call it letterZ, is qwertyuio empty
+The b, for ease lets call it letterB, is grosly grosss
+My u, for clarity lets call it letterU, is blahblah words
+Our zero, for clarity lets call it zero, is empty
+Our three, for clarity lets call it three, is qwe
+Our five, for clarity lets call it five, is qwert
+My one, for ease lets call it one, is a
+My space, for simplicity lets call it newline, is qwe ty
 
-I calmly explained to dad I was poly
-
-he yelled that d would never have a vegan son
-i proclaimed that t was a bad president
-i told him that l my bro is also poly
-he told us that l was a bad son as well
-and for more backstory my mom was around
-my mom, for ease lets call her m, is against aborition
-she declared to us that m jepordized the beans
-for some more backstory, m is my mom and she buried the beans 
-
-my room, for clarity lets call it room, is too sm
-all for me I think, just adding more backstory
-our house, for clarity lets call it house, is a b i
-t too big if you ask me while we continue to add relevant history
-
-our family, for simplicity lets call it fam, is a not no
-bit of a mess
-
-our dad, for clarity lets call him dad
-
-has some anger issues, just to add more backstory
-
-dad refused to discuss and stormed off before we could talk about them giving me their house
-
+I calmly explained to fizzbuzzloop that stuff
+So then fizzbuzzloop left three and went to modulo3
+So then fizzbuzzloop left five and went to modulo5
+I argued that modulo3 was the same as zero with modulo3
+I argued that modulo5 was the same as zero with modulo5
+I thought that modulo3 was something
+I thought that modulo5 was something else
+I declared that letterf was a letter
+I told that letteri was a letter
+I declared that letterz was a letter
+I yelled that letterz was a letter
+I screamed that letterb was a letter
+We declared that letteru was a letter
+I declared that letterz was a letter
+I declared that letterz was a letter
+I stormed off and whatever
+I declared that letterf was something
+I declared that letteri was something
+I declared that letterz was something
+I declared that letterz was something
+We refused to discuss further
+I thought that modulo5 was something else
+I screamed that letterb was a letter
+We declared that letteru was a letter
+I declared that letterz was a letter
+I declared that letterz was a letter
+We refused to discuss further
+I declared that newline was a new line
+So then fizzbuzzloop took one and called itself fizzbuzzloop
 ```
+
+
+
 
 
 ## "Documentation"
