@@ -14,11 +14,15 @@ class Helper:
         if self.identify_line_type(line) == "comparison":
             return f"{tab*self.current_indent}{self.parse_compare(line)}"
         if self.identify_line_type(line) == "while":
-            return self.parse_while(line)
-        if self.identify_line_type(line) == "whilebreak":
-            return self.parse_endwhile(line)
+            return f"{tab*(self.current_indent-1)}{self.parse_while(line)}"
+        if self.identify_line_type(line) == "break":
+            return self.parse_break(line)
         if self.identify_line_type(line) == "stdout":
             return f"{tab*self.current_indent}{self.parse_stdout(line)}"
+        if self.identify_line_type(line) == "operator":
+            return f"{tab*self.current_indent}{self.parse_basic_operator(line)}"
+        if self.identify_line_type(line) == "ifthen":
+            return f"{tab*(self.current_indent-1)}{self.parse_if(line)}"
 
 
     def sum_words(self, str_slice):
@@ -110,11 +114,11 @@ class Helper:
                 start = line.rfind(match_statement) + len(match_statement)
                 end = start + line[start+1:].find(" ") + 1
                 var_name = line[start:end+1]
-                self.current_indent = 1
+                self.current_indent += 1
                 return f'while variable_{var_name}:'
 
-    def parse_endwhile(self,line):
-        self.current_indent = 0
+    def parse_break(self,line):
+        self.current_indent -= 1
 
     def parse_stdout(self,line):
         for pronoun in self.pronouns:
@@ -156,6 +160,20 @@ class Helper:
             var3 = line[line.rfind(" "):-1]
             var3 = var3.strip()
             return f"variable_{var3} = variable_{var1} {operator[2]} variable_{var2}"
+    
+    def parse_if(self,line):
+        for pronoun in self.pronouns:
+            match_statements = [
+                f'{pronoun} believed that ',
+                f'{pronoun} thought that ',
+                ]
+            for match_statement in match_statements:
+                if match_statement == line[:len(match_statement)]:
+                    start = line.rfind(match_statement) + len(match_statement)
+                    end = start + line[start+1:].find(" ") + 1
+                    self.current_indent += 1
+                    return f"if {line[start:end]}:"
+        return "ERROR IN IF PARSE"
 
 
     #Formatting helpers
@@ -194,8 +212,8 @@ class Helper:
         if self.is_while_statement(line):
             line_type.append('while')
         #Check for while loop break
-        if self.is_whilebreak_statement(line):
-            line_type.append('whilebreak')
+        if self.is_break_statement(line):
+            line_type.append('break')
         #Check for if-then
         if self.is_ifthen_statement(line):
             line_type.append('ifthen')
@@ -245,7 +263,7 @@ class Helper:
         return False
 
     #Check for while loop end
-    def is_whilebreak_statement(self,line):
+    def is_break_statement(self,line):
         break_statements = ['refused to discuss','stormed off','refused to talk']
         for statement in break_statements:
             if statement in line:
