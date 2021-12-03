@@ -1,6 +1,6 @@
 # rfuck
 
-Inspired by brainfuck, rockstar and shakespeare. Somewhat similiar if much worse than rockstar.
+Inspired by brainfuck, rockstar, shakespeare and the absolute most poorly written reddit posts. Somewhat similiar if much worse than rockstar.
 
 Parses code that looks like the average reddit relationships question and transpiles into python and then executes the script
 
