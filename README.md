@@ -12,9 +12,17 @@ python make.py filename.redditlang
 
 ```
 
-Optional args-
+Optional args- 
+outfile name (by default just filename.py for the python script and filename for the binary)
+flags 
+  -e --execute for the python script to auto-execute after compiling
+  -b --binary to compile a single binary via pyinstaller. Yes, it will be huge.
+
+```
 
 python make.py filename.redditlang outfile ("-b" or "--binary") ("-e" or "--execute")
+
+```
 
 There will likely be issues if you try this on a non-unix system because of carriage returns. 
 
@@ -43,7 +51,7 @@ If statements!
 
 For loops
 
-Compile to golang/c binary instead of python
+Compile to native golang/c before making a binary instead of python so it's not a massive bloated mess
 
 Handle assignment with integers that have zeros in base 10 better
 
