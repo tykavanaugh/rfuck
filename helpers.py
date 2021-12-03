@@ -276,9 +276,6 @@ class Helper:
             match_statements = [
                 f'{pronoun} believed ',
                 f'{pronoun} thought ',
-                f'{pronoun} said I thought ',
-                f'{pronoun} said they thought ',
-                f'{pronoun} said everybody thought ',
                 ]
             for match_statement in match_statements:
                 if match_statement == line[:len(match_statement)]:
