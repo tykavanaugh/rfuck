@@ -163,6 +163,24 @@ We argued that cats was better than dogs with dad.
 ```
 dad = True
 
+#### Operators
 
+```
+                'gave ' +
+                'took ' -
+                'left ' %
+                'split ' // 
+                'repeated ' *
+```
+You start with "so then" followed by a variable, followed by an operator word, followed by the second variable, followed by the variable to be assigned.
 
+Ie 
+
+```
+So then alex gave bob and called it green
+```
+Evaluates to:
+```
+green = alex + bob
+```
 
