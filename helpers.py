@@ -9,14 +9,14 @@ class Helper:
 
     def identify_and_return(self,line):
         tab = f'\t'
+        if self.identify_line_type(line) == "break":
+            return self.parse_break(line)        
         if self.identify_line_type(line) == "assignment":
             return f"{tab*self.current_indent}{self.parse_assignment(line)}"
         if self.identify_line_type(line) == "comparison":
             return f"{tab*self.current_indent}{self.parse_compare(line)}"
         if self.identify_line_type(line) == "while":
             return f"{tab*(self.current_indent-1)}{self.parse_while(line)}"
-        if self.identify_line_type(line) == "break":
-            return self.parse_break(line)
         if self.identify_line_type(line) == "stdout":
             return f"{tab*self.current_indent}{self.parse_stdout(line)}"
         if self.identify_line_type(line) == "operator":
