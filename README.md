@@ -6,8 +6,13 @@ As of this update it should be a fully featured turing complete language!
 
 Simply run 
 ```
-python make.py filename.redditlang
+python make.py filename.redditlang 
+
 ```
+
+Optional args-
+
+python make.py filename.redditlang outfile ("-b" or "--binary") ("-e" or "--execute")
 
 There will likely be issues if you try this on a non-unix system because of carriage returns. 
 

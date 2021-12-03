@@ -2,25 +2,20 @@ import sys
 import re
 import helpers
 import os
-# import PyInstaller.__main__
-
-# PyInstaller.__main__.run([
-#     'my_script.py',
-#     '--onefile',
-#     '--windowed'
-# ])
-
-
+import PyInstaller.__main__
 
 def main():
-    #Store all variables in this hashtable
+    args_dict = arg_parser()
+    execute_on_compile = args_dict['execute_on_compile']
+    binary_compile = args_dict['binary_compile']
+    #Store all variables in this hashtable Legacy
     helper = helpers.Helper()
     if len(sys.argv) < 2:
         print("No file supplied, quitting")
         print("Please specifiy source code")
         return
     #read in file
-    in_file = open(sys.argv[1],'r')
+    in_file = open(args_dict['in_file'],'r')
     raw_input_code = in_file.readlines()
     in_file.close()
 
@@ -54,10 +49,10 @@ def main():
 
 
     #Set outfile filename based on args
-    if len(sys.argv) > 2:
-        out_file = open(sys.argv[2],'w')
+    if args_dict['out_file'] != '':
+        out_file = open(args_dict['out_file'],'w')
     else:
-        out_file_name = str(sys.argv[1])[:str(sys.argv[1]).rfind('.')] + '.compiled'
+        out_file_name = str(args_dict['in_file'])[:str(args_dict['in_file']).rfind('.')]+".py"
     
     #write file
     with open(out_file_name,'w') as out_file:
@@ -65,10 +60,42 @@ def main():
             out_file.write((f'{line}\n'))
     
     #execute script
-    print(out_file_name)
-    os.system(f'python3 {out_file_name}')
+    print(f"File src generated at: {out_file_name}")
+    
+    if execute_on_compile:
+        os.system(f'python3 {out_file_name}')
 
-#features
+    #compile to binary
+
+    if binary_compile:
+        PyInstaller.__main__.run([
+            f'{out_file_name}',
+            '--onefile',
+        ])
+
+
+def arg_parser():
+    out_dict = {
+        "in_file":"",
+        "out_file":"",
+        "execute_on_compile":False,
+        "binary_compile":False,
+
+    }
+    for arg in sys.argv[1:]:
+        if "-" in arg:
+            if arg == "-b" or arg == "--binary":
+                out_dict["binary_compile"] = True
+            if arg == "-e" or arg == "--execute":
+                out_dict["execute_on_compile"] = True
+        else:
+            if out_dict["in_file"] == "":
+                out_dict["in_file"] = arg
+            else:
+                out_dict["out_file"] = arg
+    return(out_dict)
+
+#Old notes
 
 #Pronouns or "some" or "someone" at the start declare some statements
 
