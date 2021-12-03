@@ -22,7 +22,7 @@ class Helper:
         if self.identify_line_type(line) == "operator":
             return f"{tab*self.current_indent}{self.parse_basic_operator(line)}"
         if self.identify_line_type(line) == "ifthen":
-            return f"{tab*(self.current_indent-1)}{self.parse_if(line)}"
+            return f"{tab*(self.current_indent)}{self.parse_if(line)}"
 
 
     def sum_words(self, str_slice):
@@ -35,7 +35,7 @@ class Helper:
             if word != "empty":
                 out_val += len(word) * 10**i
             else:
-                out_val = 10**i
+                out_val = (10**i) - 1
         return out_val
 
     def assign_variable(self,var_name,value=0):
@@ -113,7 +113,7 @@ class Helper:
             if match_statement == line[:len(match_statement)]:
                 start = line.rfind(match_statement) + len(match_statement)
                 end = start + line[start+1:].find(" ") + 1
-                var_name = line[start:end+1]
+                var_name = line[start:end]
                 self.current_indent += 1
                 return f'while variable_{var_name}:'
 
@@ -133,7 +133,7 @@ class Helper:
                 if match_statement == line[:len(match_statement)]:
                     start = line.rfind('that ') + len('that ')
                     end = start + line[start+1:].find(" ") + 1
-                    var_name = line[start:end+1]
+                    var_name = line[start:end]
                     return f'print(chr(variable_{var_name}),end="")'
 
     def parse_basic_operator(self,line):
@@ -157,9 +157,9 @@ class Helper:
             start = line.rfind(current_operator[0]) + len(current_operator[0])
             end = start + line[start+1:].find(" ") + 1
             var2 = line[start:end]
-            var3 = line[line.rfind(" "):-1]
+            var3 = line[line.rfind(" "):]
             var3 = var3.strip()
-            return f"variable_{var3} = variable_{var1} {operator[2]} variable_{var2}"
+            return f"variable_{var3} = variable_{var1} {current_operator[2]} variable_{var2}"
     
     def parse_if(self,line):
         for pronoun in self.pronouns:
@@ -172,7 +172,7 @@ class Helper:
                     start = line.rfind(match_statement) + len(match_statement)
                     end = start + line[start+1:].find(" ") + 1
                     self.current_indent += 1
-                    return f"if {line[start:end]}:"
+                    return f"if variable_{line[start:end]}:"
         return "ERROR IN IF PARSE"
 
 

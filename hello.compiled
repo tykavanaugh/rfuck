@@ -2,13 +2,13 @@ variable_d = 72
 variable_t = 69
 variable_l = 76
 variable_dad = 163
-while variable_dad :
-	print(chr(variable_d ),end="")
-	print(chr(variable_t ),end="")
-	print(chr(variable_l ),end="")
-	print(chr(variable_l ),end="")
+while variable_dad:
+	print(chr(variable_d),end="")
+	print(chr(variable_t),end="")
+	print(chr(variable_l),end="")
+	print(chr(variable_l),end="")
 	variable_m = 79
-	print(chr(variable_m ),end="")
+	print(chr(variable_m),end="")
 	variable_room = 32
 	variable_house = 111
 	variable_fam = 132

@@ -151,7 +151,7 @@ f'{first person pronoun} thought that',
 ```
 
 ```
-I thought bob was stupid
+I thought that bob was stupid
 ```
 Evaluates to 
 ```
@@ -165,7 +165,7 @@ You can break out the if loop just like the while loop- 'refused to discuss','st
 
 f"{first person pronoun} argued that" followed by a variable, followed by an operator, followed by another variable, followed by "with" followed by the new assigned variable.
 
-logic perators
+logic operators
 ```
 'was better than' >
 'was worse than' <
@@ -203,3 +203,19 @@ Evaluates to:
 green = alex + bob
 ```
 
+#### Stdout
+
+```
+f'{pronoun} told',
+f'{pronoun} declared',
+f'{pronoun} proclaimed',
+f'{pronoun} yelled',
+f'{pronoun} screamed',
+
+```
+followed by a "that " then a variable to output as ascii
+
+```
+i proclaimed that t was a bad president
+```
+Will output the value of t
