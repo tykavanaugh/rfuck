@@ -1,5 +1,7 @@
 # rfuck
 
+Inspired by brainfuck, rockstar and shakespeare. Somewhat similiar if much worse than rockstar.
+
 Parses code that looks like the average reddit relationships question and transpiles into python and then executes the script
 
 As of this update it should be a fully featured turing complete language!
