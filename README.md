@@ -4,7 +4,7 @@ Parses code that looks like the average reddit relationships question and transp
 
 Simply run 
 ```
-python main.py filename.redditlang
+python make.py filename.redditlang
 ```
 
 There will likely be issues if you try this on a non-unix system because of carriage returns. 
@@ -23,17 +23,20 @@ Comparison operators
 
 Stdout 
 
+Basic operators (add, subtract, modulo, divide, multiply, etc) - Done!
+
+*Some* documentation!
+
+If statements!
+
 ## Todo/Partial
 
-Basic operators (add, subtract, modulo, divide, multiply, etc)
 
 For loops
 
 Compile to golang/c binary instead of python
 
 Handle assignment with integers that have zeros in base 10 better
-
-Explain or document how r/relationshitsLang works like at all. probably not
 
 # Hello.redditlang
 
@@ -129,9 +132,8 @@ In progress of figuring out how I will assign 0 values, probably with a keyword.
 
 #### While loop
 
-f"{first person pronoun} calmly explained to " declares while and the word following must be an already declared variable that is the condition of the loop. As it's python, python truthy or falsy values will work for the loop
+f"{first person pronoun} calmly explained to " declares while and the word following must be an already declared variable that is the condition of the loop. As it's evaluated by a python interpreter in this version, python truthy or falsy values will work for the loop condition
 
-You cannot nest while loops in this version.
 
 For example:
 
@@ -139,14 +141,31 @@ For example:
 
 All text after that in the statement is just comments.
 
-To end the while loop a statement with 'refused to discuss','stormed off','refused to talk' will exit the loop and return to the main scope
+To end the while loop a statement with 'refused to discuss','stormed off','refused to talk' will exit the current loop
+
+#### If
+
+```
+f'{first person pronoun} believed that ',
+f'{first person pronoun} thought that',
+```
+
+```
+I thought bob was stupid
+```
+Evaluates to 
+```
+if bob:
+  {next sentence}
+```
+You can break out the if loop just like the while loop- 'refused to discuss','stormed off','refused to talk'
 
 #### Logic
 
 
 f"{first person pronoun} argued that" followed by a variable, followed by an operator, followed by another variable, followed by "with" followed by the new assigned variable.
 
-Operators
+logic perators
 ```
 'was better than' >
 'was worse than' <
@@ -163,7 +182,7 @@ We argued that cats was better than dogs with dad.
 ```
 dad = True
 
-#### Operators
+#### Primitive Operators
 
 ```
                 'gave ' +
