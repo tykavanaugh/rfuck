@@ -44,47 +44,52 @@ History about my family- we count down from 50 to 0
 Backstory about us, we print fizz if the integer is divisible by 3
 Our family history is that we print buzz if divisible by 5
 And our last bit of history is that we print fizzbuzz if divisible by 3 AND 5
-My program, for ease lets call it fizzbuzzloop, is quite empty
-My f, for clarity lets call it letterF, is mostlly empty
-Our i, for clarity lets call it letterI, is almostt two
-So z, for simplicity lets call it letterZ, is qwertyuio empty
-The b, for ease lets call it letterB, is grosly grosss
-My u, for clarity lets call it letterU, is blahblah words
-Our zero, for clarity lets call it zero, is empty
-Our three, for clarity lets call it three, is qwe
-Our five, for clarity lets call it five, is qwert
-My one, for ease lets call it one, is a
-My space, for simplicity lets call it newline, is qwe ty
+My program, for ease lets call it fizzybuzz, is quite empty
+My f, for clarity lets call it frank, is mostlly empty
+Our i, for clarity lets call it ian, is almostt two
+So z, for simplicity lets call it zack, is qwertyuio empty
+The b, for ease lets call it bob, is grosly grosss
+My u, for clarity lets call it union, is blahblah words
+Our nest, for clarity lets call it nest, is empty
+Our third, for clarity lets call it third, is qwe
+Our fifth, for clarity lets call it fifth, is qwert
+My cat, for ease lets call it cat, is a
+My space, for simplicity lets call it my_car, is qwe ty
 
-I calmly explained to fizzbuzzloop that stuff
-So then fizzbuzzloop left three and went to modulo3
-So then fizzbuzzloop left five and went to modulo5
-I argued that modulo3 was the same as zero with modulo3
-I argued that modulo5 was the same as zero with modulo5
-I thought that modulo3 was something
-I thought that modulo5 was something else
-I declared that letterf was a letter
-I told that letteri was a letter
-I declared that letterz was a letter
-I yelled that letterz was a letter
-I screamed that letterb was a letter
-We declared that letteru was a letter
-I declared that letterz was a letter
-I declared that letterz was a letter
+I calmly explained to fizzybuzz that stuff
+So then fizzybuzz left third and went to party
+So then fizzybuzz left fifth and went to theclub
+I argued that party was the same as nest with party
+I argued that theclub was the same as nest with theclub
+I thought that party was something
+I thought that theclub was something else
+I declared that frank was a letter
+I told that ian was a letter
+I declared that zack was a letter
+I yelled that zack was a kljdaskljdfasklj
+I screamed that bob was a blah blahblah
+We declared that union was a letter
+I declared that zack was a stuff
+I declared that zack was a letter
 I stormed off and whatever
-I declared that letterf was something
-I declared that letteri was something
-I declared that letterz was something
-I declared that letterz was something
+I declared that frank was something
+I declared that ian was something
+I declared that zack was more stuff
+I declared that zack was something
 We refused to discuss further
-I thought that modulo5 was something else
-I screamed that letterb was a letter
-We declared that letteru was a letter
-I declared that letterz was a letter
-I declared that letterz was a letter
+I thought that theclub was something else
+I screamed that bob was a letter
+We declared that union was a letter
+I declared that zack was a letter
+I declared that zack was a letter
 We refused to discuss further
-I declared that newline was a new line
-So then fizzbuzzloop took one and called itself fizzbuzzloop
+I declared that my_car was a new line
+So then fizzybuzz took cat and called itself fizzybuzz
+```
+
+Output:
+```
+BUZZ  FIZZ   FIZZBUZZFIZZBUZZ   FIZZ  BUZZ FIZZ   FIZZ BUZZ  FIZZ   FIZZBUZZFIZZBUZZ   FIZZ  BUZZ FIZZ   FIZZ BUZZ  FIZZ   FIZZBUZZFIZZBUZZ   FIZZ  BUZZ FIZZ   FIZZ BUZZ  FIZZ   
 ```
 
 
