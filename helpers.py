@@ -133,8 +133,29 @@ class Helper:
                     return f'print(chr(variable_{var_name}),end="")'
 
     def parse_basic_operator(self,line):
-        if line[:8] == 'so then ':
-            pass
+        operator_phrase = 'so then '
+        if line[:8] == operator_phrase:
+            start = line.rfind(operator_phrase) + len(operator_phrase)
+            end = start + line[start+1:].find(" ") + 1
+            var1 = line[start:end]
+            current_operator = ''
+            operators_list = [
+                ('gave ',lambda x,y:x+y,'+'),
+                ('took ',lambda x,y:x-y,'-'),
+                ('left ',lambda x,y:x%y,'%'),
+                ('split ',lambda x,y:x//y,'//'),
+                ('repeated ',lambda x,y:x*y,'*'),
+            ]
+            for operator in operators_list:
+                operator_index = start+len(operator[0])
+                if operator[0] in line[operator_index:line[operator_index:].rfind(" ")]:
+                    current_operator = operator
+            start = line.rfind(current_operator[0]) + len(current_operator[0])
+            end = start + line[start+1:].find(" ") + 1
+            var2 = line[start:end]
+            var3 = line[line.rfind(" "):-1]
+            var3 = var3.strip()
+            return f"variable_{var3} = variable_{var1} {operator[2]} variable_{var2}"
 
 
     #Formatting helpers
