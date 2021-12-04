@@ -48,6 +48,8 @@ If statements!
 
 ## Todo/Partial
 
+Unfuck the compiler's inability to deal with spaces in filepaths to the source code
+
 Tweak stdout to get carriage returns to work properly
 
 For loops
