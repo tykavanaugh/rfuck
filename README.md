@@ -48,6 +48,7 @@ If statements!
 
 ## Todo/Partial
 
+Tweak stdout to get carriage returns to work properly
 
 For loops
 
